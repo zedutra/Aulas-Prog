@@ -18,14 +18,19 @@ int main(){
     printf("Qual o numero de alunos: ");
     scanf(" %d", &nAlunos);
     
-    idades = malloc(nAlunos * sizeof(int));
+    idades = (int*) malloc(nAlunos * sizeof(int));
     
-    for(int i = 0; i < nAlunos; i++){
-        printf("Idade: ");
-        scanf(" %d", &idades[i]);
+    if(idades != NULL){
+        for(int i = 0; i < nAlunos; i++){
+            printf("Idade: ");
+            scanf(" %d", &idades[i]);
+        }
+    } else {
+        printf("Erro ao alocar o vetor.");
     }
     
     printf("A media eh: %.2f", media(nAlunos, idades));
     
+    free(idades);
     return 0;
 }
